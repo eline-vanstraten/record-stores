@@ -1,0 +1,207 @@
+[
+  {
+    "id": 1,
+    "name": "Velvet Music Rotterdam",
+    "address": "Oude Binnenweg 121‑A, 3012 JC Rotterdam, Netherlands",
+    "latitude": 51.917364,
+    "longitude": 4.473894,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "12:00‑18:00"},
+      {"day": "Tuesday", "hours": "10:00‑18:00"},
+      {"day": "Wednesday", "hours": "10:00‑18:00"},
+      {"day": "Thursday", "hours": "10:00‑18:00"},
+      {"day": "Friday", "hours": "10:00‑21:00"},
+      {"day": "Saturday", "hours": "10:00‑18:00"},
+      {"day": "Sunday", "hours": "12:00‑17:00"}
+    ]
+  },
+  {
+    "id": 2,
+    "name": "De Plaatboef",
+    "address": "Nieuwe Binnenweg 81‑A, 3014 GE Rotterdam, Netherlands",
+    "latitude": 51.916276,
+    "longitude": 4.468910,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "12:00‑18:00"},
+      {"day": "Tuesday", "hours": "10:00‑18:00"},
+      {"day": "Wednesday", "hours": "10:00‑18:00"},
+      {"day": "Thursday", "hours": "10:00‑18:00"},
+      {"day": "Friday", "hours": "10:00‑21:00"},
+      {"day": "Saturday", "hours": "10:00‑18:00"},
+      {"day": "Sunday", "hours": "12:00‑17:00"}
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Demonfuzz Records",
+    "address": "Nieuwe Binnenweg 86, 3015 BC Rotterdam, Netherlands",
+    "latitude": 51.915794,
+    "longitude": 4.468041,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "12:00‑18:00"},
+      {"day": "Tuesday", "hours": "12:00‑18:00"},
+      {"day": "Wednesday", "hours": "12:00‑18:00"},
+      {"day": "Thursday", "hours": "12:00‑18:00"},
+      {"day": "Friday", "hours": "12:00‑18:00"},
+      {"day": "Saturday", "hours": "12:00‑18:00"},
+      {"day": "Sunday", "hours": null}
+    ]
+  },
+  {
+    "id": 4,
+    "name": "JensDoRecords",
+    "address": "Zwaanshals 294B, 3035 KS Rotterdam, Netherlands",
+    "latitude": 51.933136,
+    "longitude": 4.486156,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": null},
+      {"day": "Tuesday", "hours": null},
+      {"day": "Wednesday", "hours": "12:00‑17:00"},
+      {"day": "Thursday", "hours": null},
+      {"day": "Friday", "hours": "12:00‑17:00"},
+      {"day": "Saturday", "hours": "11:00‑17:30"},
+      {"day": "Sunday", "hours": null}
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Plato Rotterdam",
+    "address": "Nieuwe Binnenweg 13b, 3014 GA Rotterdam, Netherlands",
+    "latitude": 51.916976,
+    "longitude": 4.471971,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "12:00‑18:00"},
+      {"day": "Tuesday", "hours": "10:00‑18:00"},
+      {"day": "Wednesday", "hours": "10:00‑18:00"},
+      {"day": "Thursday", "hours": "10:00‑18:00"},
+      {"day": "Friday", "hours": "10:00‑21:00"},
+      {"day": "Saturday", "hours": "10:00‑18:00"},
+      {"day": "Sunday", "hours": "12:00‑18:00"}
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Clone.nl",
+    "address": "Raampoortstraat 12, 3032 AH Rotterdam, Netherlands",
+    "latitude": 51.927141,
+    "longitude": 4.478772,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "12:00‑18:00"},
+      {"day": "Tuesday", "hours": "10:30‑18:00"},
+      {"day": "Wednesday", "hours": "10:30‑18:00"},
+      {"day": "Thursday", "hours": "10:30‑18:00"},
+      {"day": "Friday", "hours": "10:30‑21:00"},
+      {"day": "Saturday", "hours": "10:30‑18:00"},
+      {"day": "Sunday", "hours": null}
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Songs For Sale",
+    "address": "Meent 22A, 3011 JK Rotterdam, Netherlands",
+    "latitude": 51.923643,
+    "longitude": 4.485532,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "12:00‑17:00"},
+      {"day": "Tuesday", "hours": null},
+      {"day": "Wednesday", "hours": "11:00‑18:00"},
+      {"day": "Thursday", "hours": null},
+      {"day": "Friday", "hours": "11:00‑18:00"},
+      {"day": "Saturday", "hours": "10:00‑18:00"},
+      {"day": "Sunday", "hours": null}
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Offbeat Records",
+    "address": "Zaagmolenkade 208, 3035 KC Rotterdam, Netherlands",
+    "latitude": 51.931563,
+    "longitude": 4.485836,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": null},
+      {"day": "Tuesday", "hours": null},
+      {"day": "Wednesday", "hours": "10:30‑18:00"},
+      {"day": "Thursday", "hours": null},
+      {"day": "Friday", "hours": "10:30‑18:00"},
+      {"day": "Saturday", "hours": "10:30‑18:00"},
+      {"day": "Sunday", "hours": "10:30‑18:00"}
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Best‑Kept‑Records",
+    "address": "Nieuwe Binnenweg 322C, 3021 GV Rotterdam, Netherlands",
+    "latitude": 51.912519,
+    "longitude": 4.457038,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": null},
+      {"day": "Tuesday", "hours": null},
+      {"day": "Wednesday", "hours": "12:00‑18:00"},
+      {"day": "Thursday", "hours": null},
+      {"day": "Friday", "hours": "12:00‑18:00"},
+      {"day": "Saturday", "hours": "12:00‑18:00"},
+      {"day": "Sunday", "hours": "12:00‑18:00"}
+    ]
+  },
+  {
+    "id": 10,
+    "name": "De Oorzaak",
+    "address": "Vijverhofstraat 60, 3032 SN Rotterdam, Netherlands",
+    "latitude": 51.930072,
+    "longitude": 4.474964,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": null},
+      {"day": "Tuesday", "hours": null},
+      {"day": "Wednesday", "hours": "13:00‑18:00"},
+      {"day": "Thursday", "hours": null},
+      {"day": "Friday", "hours": "13:00‑18:00"},
+      {"day": "Saturday", "hours": "13:00‑18:00"},
+      {"day": "Sunday", "hours": null}
+    ]
+  },
+  {
+    "id": 11,
+    "name": "vinylspot",
+    "address": "Josephstraat 162, 3014 TX Rotterdam, Netherlands",
+    "latitude": 51.916208,
+    "longitude": 4.466825,
+    "type": "Record store",
+    "hours": []
+  },
+  {
+    "id": 12,
+    "name": "Hans Tweedehands",
+    "address": "Provenierssingel 89‑B, 3033 EJ Rotterdam, Netherlands",
+    "latitude": 51.926688,
+    "longitude": 4.468940,
+    "type": "Record store",
+    "hours": []
+  },
+  {
+    "id": 13,
+    "name": "Velvet Music Donner",
+    "address": "Coolsingel 129, 3012 AG Rotterdam, Netherlands",
+    "latitude": 51.918798,
+    "longitude": 4.479497,
+    "type": "Record store",
+    "hours": [
+      {"day": "Monday", "hours": "11:00‑18:00"},
+      {"day": "Tuesday", "hours": "09:30‑18:00"},
+      {"day": "Wednesday", "hours": "09:30‑18:00"},
+      {"day": "Thursday", "hours": "09:30‑18:00"},
+      {"day": "Friday", "hours": "09:30‑21:00"},
+      {"day": "Saturday", "hours": "09:30‑18:00"},
+      {"day": "Sunday", "hours": "12:00‑18:00"}
+    ]
+  }
+]
