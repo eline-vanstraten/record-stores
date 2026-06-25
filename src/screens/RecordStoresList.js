@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import CustomButton from "../components/CustomButton";
 
 export default function RecordStoresList() {
 
@@ -29,7 +30,6 @@ export default function RecordStoresList() {
 
         } catch (error) {
             console.error("Er is een fout opgetreden", error);
-            setLoading(false);
 
         }
 
@@ -38,14 +38,17 @@ export default function RecordStoresList() {
 
     return (
         <View style={styles.container}>
+             <CustomButton onPress={() => console.log('Knop ingedrukt!')}>Press</CustomButton>
             <FlatList
                 data={stores}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) =>
                     (<Text>{item.name}</Text>)
 
                 }
             />
+
+          
         </View>
     )
 }

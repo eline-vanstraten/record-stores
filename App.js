@@ -3,9 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { Text, View, FlatList, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import RecordStoresList from './screens/RecordStoresList.js';
-import Map from './screens/Map.js';
-import Favorites from './screens/Favorites.js';
+import RecordStoresList from './src/screens/RecordStoresList.js';
+import Map from './src/screens/Map.js';
+import Favorites from './src/screens/Favorites.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +27,7 @@ export default function App() {
       <SafeAreaView style={styles.safeAreaView}>
 
         <MyTabs />
+    
 
       </SafeAreaView>
     </NavigationContainer >
