@@ -22,7 +22,7 @@ export default function Card({ onPress, buttonText, storeName, type, onFavoriteP
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#E1E1E1",
+        backgroundColor: "#ffc1c1",
         borderWidth: 2,
         borderColor: "#620000",
         padding: 15,

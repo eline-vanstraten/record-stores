@@ -4,8 +4,20 @@ import HomeScreen from "../screens/HomeScreen"
 import Favorites from "../screens/Favorites"
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import RecordStoresDetail from "../screens/stores/RecordStoresDetail";
 
 const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator()
+
+function HomeStackScreen(){
+    return(
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Stores" component={HomeScreen}/>
+            <Stack.Screen name="StoreDetail" component={RecordStoresDetail}/>
+        </Stack.Navigator>
+    )
+}
 
 export default function TabNavigator() {
 
@@ -33,7 +45,7 @@ export default function TabNavigator() {
                 )
             }}
         >
-            <Tab.Screen name="Stores" component={HomeScreen} options={{
+            <Tab.Screen name="Stores" component={HomeStackScreen} options={{
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons name={focused ? "list" : "list-outline"} size={size} color={color}></Ionicons>
                 )
