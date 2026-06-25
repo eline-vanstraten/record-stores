@@ -19,18 +19,18 @@ const styles = StyleSheet.create({
     margin: 10,
     paddingVertical: 6,
     paddingHorizontal: 32,
-    backgroundColor: '#FFFFFF',
+    backgroundColor:"#FFFFFF",
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: '#620000',
-    alignItems: 'center',
-    justifyContent: 'center'
+    borderColor: "#620000",
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonText: {
     fontSize: 16,
-    textAlign: 'center',
-    color: '#0c0c0c',
-    fontWeight: 'bold'
+    textAlign: "center",
+    color: "#0c0c0c",
+    fontWeight: "bold"
   }
 
 })

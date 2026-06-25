@@ -22,21 +22,21 @@ export default function Card({ onPress, buttonText, storeName, type, onFavoriteP
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#E1E1E1',
+        backgroundColor: "#E1E1E1",
         borderWidth: 2,
-        borderColor: '#620000',
+        borderColor: "#620000",
         padding: 15,
         minHeight: 75,
-        flex: 1,
-        position: 'relative',
+        position: "relative",
         marginVertical: 8,
-        aspectRatio: 1
+        width: 320,
+        height: 200
     },
     titleText: {
         fontSize: 25,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        
+        fontWeight: "bold",
+        textAlign: "center",
+
     },
     typeText: {
         fontSize: 18,
@@ -44,16 +44,16 @@ const styles = StyleSheet.create({
 
     },
     favoriteButton: {
-        position: 'absolute',
+        position: "absolute",
         top: 12,
         right: 12,
         zIndex: 1
     },
     contentContainer: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 40
     }
 
 })

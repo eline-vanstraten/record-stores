@@ -23,7 +23,7 @@ export default function TabNavigator() {
                 headerTitle: "RecordRadar",
                 headerTitleAlign: "center",
                 headerTitleStyle: {
-                    fontWeight: 'bold',
+                    fontWeight: "bold",
                     fontSize: 20,
                 },
                 headerRight: () => (
