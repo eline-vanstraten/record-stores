@@ -7,22 +7,32 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import RecordStoresDetail from "../screens/stores/RecordStoresDetail";
 
-const Tab = createBottomTabNavigator()
-const Stack = createStackNavigator()
+const NavigationTab = createBottomTabNavigator()
+const HomeStack = createStackNavigator()
+const FavoriteStack = createStackNavigator()
 
-function HomeStackScreen(){
-    return(
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Stores" component={HomeScreen}/>
-            <Stack.Screen name="StoreDetail" component={RecordStoresDetail}/>
-        </Stack.Navigator>
+function HomeStackScreen() {
+    return (
+        <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+            <HomeStack.Screen name="Stores" component={HomeScreen} />
+            <HomeStack.Screen name="StoreDetail" component={RecordStoresDetail} />
+        </HomeStack.Navigator>
+    )
+}
+
+function FavoriteStackScreen() {
+    return (
+        <FavoriteStack.Navigator screenOptions={{ headerShown: false }}>
+            <FavoriteStack.Screen name="FavoritesList" component={Favorites}/>
+            <FavoriteStack.Screen name="StoreDetail" component={RecordStoresDetail} />
+        </FavoriteStack.Navigator>
     )
 }
 
 export default function TabNavigator() {
 
     return (
-        <Tab.Navigator
+        <NavigationTab.Navigator
             screenOptions={{
                 tabBarStyle: {
                     backgroundColor: "#FFFFFF",
@@ -45,22 +55,22 @@ export default function TabNavigator() {
                 )
             }}
         >
-            <Tab.Screen name="Stores" component={HomeStackScreen} options={{
+            <NavigationTab.Screen name="Stores" component={HomeStackScreen} options={{
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons name={focused ? "list" : "list-outline"} size={size} color={color}></Ionicons>
                 )
             }} />
-            <Tab.Screen name="Map" component={Map} options={{
+            <NavigationTab.Screen name="Map" component={Map} options={{
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons name={focused ? "map" : "map-outline"} size={size} color={color}></Ionicons>
                 )
             }} />
-            <Tab.Screen name="Favorites" component={Favorites} options={{
+            <NavigationTab.Screen name="Favorites" component={FavoriteStackScreen} options={{
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons name={focused ? "star" : "star-outline"} size={size} color={color}></Ionicons>
                 )
             }} />
-        </Tab.Navigator>
+        </NavigationTab.Navigator>
     )
 }
 

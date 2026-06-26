@@ -1,30 +1,70 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from "react-native";
-import RecordStoresDetail from "./RecordStoresListItem";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import RecordStoresListItem from "./RecordStoresListItem";
+import { useIsFocused } from "@react-navigation/native";
+import { FetchAPI } from "../../services/Fetch";
 
 export default function RecordStoresList() {
 
-    const url = "http://stud.hosted.hr.nl/1096534/record-stores.json"
     const [stores, setStores] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [favorites, setFavorites] = useState([])
+    const isFocused = useIsFocused()
+
+    //laad pagina opnieuw zodra er naar genavigeerd wordt zodat aanpassingen meteen doorgevoerd worden
+    useEffect(() => {
+        loadFavorites()
+    }, [isFocused])
+
 
     useEffect(() => {
         getStores()
     }, []);
 
+
+    //favorite store
+    async function loadFavorites() {
+        try {
+            const savedFavorites = await AsyncStorage.getItem('@favorite_stores')
+            if (savedFavorites !== null) {
+                //omzetten naar javascript array
+                setFavorites(JSON.parse(savedFavorites))
+            }
+
+        } catch (error) {
+            console.error("Er is een fout opgetreden", error);
+        }
+
+    }
+
+    async function changeFavorite(storeId) {
+        let updatedFavorites = [...favorites]
+        const idString = storeId.toString()
+
+        if (updatedFavorites.includes(idString)) {
+            //als store er al in stond eruit halen
+            updatedFavorites = updatedFavorites.filter(id => id !== idString)
+        } else {
+            //store toevoegen
+            updatedFavorites.push(idString)
+        }
+
+        setFavorites(updatedFavorites)
+
+        try {
+            await AsyncStorage.setItem('@favorite_stores', JSON.stringify(updatedFavorites))
+        } catch (error) {
+            console.error("Er is een fout opgetreden", error);
+        }
+    }
+
+
     async function getStores() {
         setLoading(true)
         try {
-            const response = await fetch(url, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json",
-                    "x-delay-ms": "2000"
-                }
-            }
-            )
 
-            const data = await response.json()
+            const data = await FetchAPI()
 
             console.log(data);
 
@@ -34,17 +74,15 @@ export default function RecordStoresList() {
         } catch (error) {
             console.error("Er is een fout opgetreden", error);
             setLoading(false);
-
         }
-
 
     }
 
-    if(loading){
+    if (loading) {
         return (
             <View style={[styles.container, styles.center]}>
                 <ActivityIndicator size="large" color="#620000"></ActivityIndicator>
-                <Text style={{marginTop: 10, color: "#620000"}}>Record Stores loading...</Text>
+                <Text style={{ marginTop: 10, color: "#620000" }}>Record Stores loading...</Text>
             </View>
         )
     }
@@ -55,7 +93,10 @@ export default function RecordStoresList() {
                 data={stores}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) =>
-                    (<RecordStoresDetail store={item} />)
+                (<RecordStoresListItem
+                    store={item}
+                    isFavorite={favorites.includes(item.id.toString())}
+                    onFavoritePress={() => changeFavorite(item.id)} />)
 
                 }
             />

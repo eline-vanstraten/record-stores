@@ -2,12 +2,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CustomButton from "./CustomButton";
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Card({ onPress, buttonText, storeName, type, onFavoritePress }) {
+export default function Card({ onPress, buttonText, storeName, type, onFavoritePress, isFavorite }) {
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
 
             <TouchableOpacity onPress={onFavoritePress} style={styles.favoriteButton}>
-                <Ionicons name="star-outline" size={30}></Ionicons>
+                <Ionicons name={isFavorite ? "star" : "star-outline"} size={30} color={isFavorite ? "#c9a722" : "#0c0c0c"}></Ionicons>
             </TouchableOpacity>
 
             <View style={styles.contentContainer}>

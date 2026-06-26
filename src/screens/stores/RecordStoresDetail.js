@@ -1,32 +1,28 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import CustomButton from "../../components/CustomButton";
+import { FetchAPI } from "../../services/Fetch";
 
 export default function RecordStoresDetail({ route }) {
-
-    const url = "http://stud.hosted.hr.nl/1096534/record-stores.json"
     const [selectedStore, setSelectedStore] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const { storeId } = route.params
+    const { storeId } = route?.params || {}
 
     useEffect(() => {
-        getStoreDetail()
+        if (storeId) {
+            getStoreDetail()
+        } else {
+            setLoading(false)
+        }
+
     }, [storeId])
 
     async function getStoreDetail() {
         setLoading(true)
         try {
-            const response = await fetch(url, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json",
-                    "x-delay-ms": "2000"
-                }
-            }
-            )
 
-            const data = await response.json()
+            const data = await FetchAPI()
             const store = data.find(item => item.id === storeId)
 
             setSelectedStore(store);
@@ -53,6 +49,14 @@ export default function RecordStoresDetail({ route }) {
         return (
             <View style={[styles.container, styles.center]}>
                 <Text style={styles.text}>Store not found.</Text>
+            </View>
+        )
+    }
+
+    if(!storeId) {
+        return (
+            <View style={[styles.container, styles.center]}>
+                <Text style={styles.text}>First chose a store from the home screen.</Text>
             </View>
         )
     }
