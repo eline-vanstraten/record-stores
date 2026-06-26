@@ -1,13 +1,19 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CustomButton from "./CustomButton";
 import { Ionicons } from '@expo/vector-icons';
+import { useLayout } from "../contexts/LayoutContext"
 
 export default function Card({ onPress, buttonText, storeName, type, onFavoritePress, isFavorite }) {
+
+    //dark mode
+    const { isDarkMode } = useLayout()
+    const styles = getStyles(isDarkMode)
+
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
 
             <TouchableOpacity onPress={onFavoritePress} style={styles.favoriteButton}>
-                <Ionicons name={isFavorite ? "star" : "star-outline"} size={30} color={isFavorite ? "#c9a722" : "#0c0c0c"}></Ionicons>
+                <Ionicons name={isFavorite ? "star" : "star-outline"} size={30} color={isFavorite ? "#c9a722" : (isDarkMode ? "#FFFFFF" : "#0c0c0c")}></Ionicons>
             </TouchableOpacity>
 
             <View style={styles.contentContainer}>
@@ -20,11 +26,11 @@ export default function Card({ onPress, buttonText, storeName, type, onFavoriteP
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (isDarkMode) => StyleSheet.create({
     container: {
-        backgroundColor: "#ffc1c1",
+        backgroundColor: isDarkMode ? "#753333" : "#ffc1c1",
         borderWidth: 2,
-        borderColor: "#620000",
+        borderColor: isDarkMode ? "#F57474" : "#620000",
         padding: 15,
         minHeight: 75,
         position: "relative",
@@ -34,12 +40,14 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 25,
+        color: isDarkMode ? "#FFFFFF" : "#0c0c0c",
         fontWeight: "bold",
         textAlign: "center",
 
     },
     typeText: {
         fontSize: 18,
+        color: isDarkMode ? "#FFFFFF" : "#0c0c0c",
         padding: 10
 
     },

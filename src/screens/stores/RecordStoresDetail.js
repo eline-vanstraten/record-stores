@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import { FetchAPI } from "../../services/Fetch";
+import { useLayout } from "../../contexts/LayoutContext";
 
 export default function RecordStoresDetail({ route }) {
     const [selectedStore, setSelectedStore] = useState(null)
     const [loading, setLoading] = useState(true)
+
+     //darkmode
+    const { isDarkMode } = useLayout()
+    const styles = getStyles(isDarkMode)
 
     const { storeId } = route?.params || {}
 
@@ -38,7 +43,7 @@ export default function RecordStoresDetail({ route }) {
     if (loading) {
         return (
             <View style={[styles.container, styles.center]}>
-                <ActivityIndicator size="large" color="#620000"></ActivityIndicator>
+                <ActivityIndicator size="large" color={isDarkMode ? "#F57474" : "#620000"}></ActivityIndicator>
                 <Text style={styles.text}>Record Store loading...</Text>
             </View>
         )
@@ -97,17 +102,17 @@ export default function RecordStoresDetail({ route }) {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (isDarkMode) => StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F57474",
+        backgroundColor: isDarkMode ? "#620000" : "#F57474",
     },
     center: {
         justifyContent: "center",
         alignItems: "center"
     },
     background: {
-        backgroundColor: "#ffc1c1",
+        backgroundColor: isDarkMode ? "#753333" : "#ffc1c1",
         width: "90%",
         maxWidth: 360,
         borderRadius: 2,
@@ -117,31 +122,31 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 25,
         fontWeight: "bold",
-        color: "#620000",
+        color: isDarkMode ? "#F57474" : "#620000",
         textAlign: "center",
         marginBottom: 4
     },
     typeText: {
         fontSize: 18,
-        color: "#0c0c0c",
+        color: isDarkMode ? "#FFFFFF" : "#0c0c0c",
         fontStyle: "italic",
         marginBottom: 12
     },
     divider: {
         width: "100%",
         height: 1,
-        backgroundColor: "#EBEBEB",
+        backgroundColor: isDarkMode ? "#FFFFFF" : "#0c0c0c",
         marginVertical: 12,
     },
     title: {
         fontSize: 16,
         fontWeight: "bold",
-        color: "#0c0c0c",
+        color: isDarkMode ? "#FFFFFF" : "#0c0c0c",
         alignSelf: "flex-start",
     },
     text: {
         fontSize: 15,
-        color: "#0c0c0c",
+        color: isDarkMode ? "#FFFFFF" : "#0c0c0c",
         alignSelf: "flex-start",
     },
     hoursContainer: {

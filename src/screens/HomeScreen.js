@@ -1,7 +1,13 @@
+import { useLayout } from "../contexts/LayoutContext"
 import RecordStoresList from "./stores/RecordStoresList"
 import { View, StyleSheet } from "react-native"
 
-export default function HomeScreen(){
+export default function HomeScreen() {
+
+    //dark mode
+    const { isDarkMode } = useLayout()
+    const styles = getStyles(isDarkMode)
+
     return (
         <View style={styles.container}>
             <RecordStoresList></RecordStoresList>
@@ -9,10 +15,10 @@ export default function HomeScreen(){
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (isDarkMode) => StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F57474"
+        backgroundColor: isDarkMode ? "#620000" : "#F57474"
     }
 })
 

@@ -6,6 +6,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import RecordStoresDetail from "../screens/stores/RecordStoresDetail";
+import { useLayout } from "../contexts/LayoutContext";
+import { useNavigation } from "@react-navigation/native";
+import Settings from "../screens/Settings";
 
 const NavigationTab = createBottomTabNavigator()
 const HomeStack = createStackNavigator()
@@ -14,7 +17,7 @@ const FavoriteStack = createStackNavigator()
 function HomeStackScreen() {
     return (
         <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-            <HomeStack.Screen name="Stores" component={HomeScreen} />
+            <HomeStack.Screen name="StoresList" component={HomeScreen} />
             <HomeStack.Screen name="StoreDetail" component={RecordStoresDetail} />
         </HomeStack.Navigator>
     )
@@ -23,7 +26,7 @@ function HomeStackScreen() {
 function FavoriteStackScreen() {
     return (
         <FavoriteStack.Navigator screenOptions={{ headerShown: false }}>
-            <FavoriteStack.Screen name="FavoritesList" component={Favorites}/>
+            <FavoriteStack.Screen name="FavoritesList" component={Favorites} />
             <FavoriteStack.Screen name="StoreDetail" component={RecordStoresDetail} />
         </FavoriteStack.Navigator>
     )
@@ -31,26 +34,30 @@ function FavoriteStackScreen() {
 
 export default function TabNavigator() {
 
+    const { isDarkMode } = useLayout()
+    const navigation = useNavigation()
+
     return (
         <NavigationTab.Navigator
             screenOptions={{
                 tabBarStyle: {
-                    backgroundColor: "#FFFFFF",
+                    backgroundColor: isDarkMode ? "#0c0c0c" : "#FFFFFF",
                 },
-                tabBarActiveTintColor: "#620000",
-                tabBarInactiveTintColor: "#0c0c0c",
+                tabBarActiveTintColor: isDarkMode ? "#F57474" : "#620000",
+                tabBarInactiveTintColor: isDarkMode ? "#FFFFFF" : "#0c0c0c",
                 headerStyle: {
-                    backgroundColor: "#FFFFFF"
+                    backgroundColor: isDarkMode ? "#0c0c0c" : "#FFFFFF"
                 },
                 headerTitle: "RecordRadar",
                 headerTitleAlign: "center",
                 headerTitleStyle: {
                     fontWeight: "bold",
                     fontSize: 20,
+                    color: isDarkMode ? "#FFFFFF" : "#0c0c0c",
                 },
                 headerRight: () => (
-                    <TouchableOpacity onPress={() => console.log("Instellingen geopend")} style={styles.settingsButton}>
-                        <Ionicons name="settings-outline" size={24} color="#0c0c0c"></Ionicons>
+                    <TouchableOpacity onPress={() => navigation.navigate("Settings")} style={styles.settingsButton}>
+                        <Ionicons name="settings-outline" size={24} color={isDarkMode ? "#FFFFFF" : "#0c0c0c"}></Ionicons>
                     </TouchableOpacity>
                 )
             }}
@@ -69,6 +76,9 @@ export default function TabNavigator() {
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons name={focused ? "star" : "star-outline"} size={size} color={color}></Ionicons>
                 )
+            }} />
+            <NavigationTab.Screen name="Settings" component={Settings} options={{
+                tabBarItemStyle: {display: "none"}
             }} />
         </NavigationTab.Navigator>
     )

@@ -6,12 +6,17 @@ import RecordStoresList from "./stores/RecordStoresList";
 import RecordStoresListItem from "./stores/RecordStoresListItem";
 import { useIsFocused } from "@react-navigation/native";
 import { FetchAPI } from "../services/Fetch";
+import { useLayout } from "../contexts/LayoutContext"
 
 export default function Favorites() {
 
     const [favoriteStores, setFavoriteStores] = useState([]);
     const [loading, setLoading] = useState(true)
     const isFocused = useIsFocused()
+
+    //dark mode
+    const { isDarkMode } = useLayout()
+    const styles = getStyles(isDarkMode)
 
     useEffect(() => {
         if (isFocused) {
@@ -103,10 +108,10 @@ export default function Favorites() {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (isDarkMode) => StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F57474",
+        backgroundColor: isDarkMode ? "#620000" : "#F57474",
     },
     center: {
         justifyContent: "center",

@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import RecordStoresListItem from "./RecordStoresListItem";
 import { useIsFocused } from "@react-navigation/native";
 import { FetchAPI } from "../../services/Fetch";
+import { useLayout } from "../../contexts/LayoutContext";
 
 export default function RecordStoresList() {
 
@@ -11,6 +12,10 @@ export default function RecordStoresList() {
     const [loading, setLoading] = useState(true)
     const [favorites, setFavorites] = useState([])
     const isFocused = useIsFocused()
+
+    //darkmode
+    const { isDarkMode } = useLayout()
+    const styles = getStyles(isDarkMode)
 
     //laad pagina opnieuw zodra er naar genavigeerd wordt zodat aanpassingen meteen doorgevoerd worden
     useEffect(() => {
@@ -81,8 +86,8 @@ export default function RecordStoresList() {
     if (loading) {
         return (
             <View style={[styles.container, styles.center]}>
-                <ActivityIndicator size="large" color="#620000"></ActivityIndicator>
-                <Text style={{ marginTop: 10, color: "#620000" }}>Record Stores loading...</Text>
+                <ActivityIndicator size="large" color={isDarkMode ? "#F57474" : "#620000"}></ActivityIndicator>
+                <Text style={{ marginTop: 10, color: isDarkMode ? "#F57474" : "#620000"}}>Record Stores loading...</Text>
             </View>
         )
     }
@@ -105,10 +110,10 @@ export default function RecordStoresList() {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (isDarkMode) => StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F57474",
+        backgroundColor: isDarkMode ? "#620000" : "#F57474",
     },
     center: {
         justifyContent: "center",
