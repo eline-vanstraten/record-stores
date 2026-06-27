@@ -3,16 +3,19 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import { FetchAPI } from "../../services/Fetch";
 import { useLayout } from "../../contexts/LayoutContext";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RecordStoresDetail({ route }) {
     const [selectedStore, setSelectedStore] = useState(null)
     const [loading, setLoading] = useState(true)
 
-     //darkmode
+    //darkmode
     const { isDarkMode } = useLayout()
     const styles = getStyles(isDarkMode)
 
     const { storeId } = route?.params || {}
+
+    const navigation = useNavigation()
 
     useEffect(() => {
         if (storeId) {
@@ -40,6 +43,15 @@ export default function RecordStoresDetail({ route }) {
         }
     }
 
+    async function findOnMap() {
+        if (selectedStore) {
+            navigation.navigate("Map", {
+                storeLatitude: selectedStore.latitude,
+                storeLongitude: selectedStore.longitude
+            })
+        }
+    }
+
     if (loading) {
         return (
             <View style={[styles.container, styles.center]}>
@@ -58,7 +70,7 @@ export default function RecordStoresDetail({ route }) {
         )
     }
 
-    if(!storeId) {
+    if (!storeId) {
         return (
             <View style={[styles.container, styles.center]}>
                 <Text style={styles.text}>First chose a store from the home screen.</Text>
@@ -95,7 +107,7 @@ export default function RecordStoresDetail({ route }) {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <CustomButton>Find on the map</CustomButton>
+                    <CustomButton onPress={findOnMap}>Find on the map</CustomButton>
                 </View>
             </View>
         </View>
