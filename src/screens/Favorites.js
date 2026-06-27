@@ -72,8 +72,8 @@ export default function Favorites() {
     if (loading) {
         return (
             <View style={[styles.container, styles.center]}>
-                <ActivityIndicator size="large" color="#620000"></ActivityIndicator>
-                <Text style={{ marginTop: 10, color: "#620000" }}>Favorites loading...</Text>
+                <ActivityIndicator size="large" color={isDarkMode ? "#F57474" : "#620000"}></ActivityIndicator>
+                <Text style={{ marginTop: 10, color: isDarkMode ? "#F57474" : "#620000"}}>Favorites loading...</Text>
             </View>
         )
     }
@@ -81,7 +81,7 @@ export default function Favorites() {
     if (favoriteStores.length === 0) {
         return (
             <View style={[styles.container, styles.center]}>
-                <Text style={{ marginTop: 10, color: "#620000" }}>No favorite stores yet.</Text>
+                <Text style={{ marginTop: 10, color: isDarkMode ? "#F57474" : "#620000"}}>No favorite stores yet.</Text>
             </View>
         )
     }
