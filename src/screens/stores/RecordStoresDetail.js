@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { use, useEffect, useState } from "react";
+import { ActivityIndicator, Share, StyleSheet, Text, View } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import { FetchAPI } from "../../services/Fetch";
 import { useLayout } from "../../contexts/LayoutContext";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function RecordStoresDetail({ route }) {
     const [selectedStore, setSelectedStore] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [isFavorite, setIsFavorite] = useState(false)
 
     //darkmode
     const { isDarkMode } = useLayout()
@@ -33,6 +35,13 @@ export default function RecordStoresDetail({ route }) {
             const data = await FetchAPI()
             const store = data.find(item => item.id === storeId)
 
+            const savedFavorites = await AsyncStorage.getItem('@favorite_stores')
+
+            if (savedFavorites !== null) {
+                const favoriteIds = JSON.parse(savedFavorites)
+                setIsFavorite(favoriteIds.includes(storeId.toString()))
+            }
+
             setSelectedStore(store);
             setLoading(false)
 
@@ -40,6 +49,22 @@ export default function RecordStoresDetail({ route }) {
             console.error("Er is een fout opgetreden", error);
             setLoading(false);
 
+        }
+    }
+
+    async function shareStoreDetails() {
+        if (!selectedStore) return
+
+        try {
+            const statusText = isFavorite ? "This is my favorite hotspot" : "Look at this hotspot"
+            const message = `${statusText}. ${selectedStore.type}: ${selectedStore.name}. Address: ${selectedStore.address} `
+
+            await Share.share({
+                message: message,
+                title: selectedStore.name
+            })
+        } catch (error) {
+            console.error("Er is een fout opgetreden", error);
         }
     }
 
@@ -108,6 +133,11 @@ export default function RecordStoresDetail({ route }) {
 
                 <View style={styles.buttonContainer}>
                     <CustomButton onPress={findOnMap}>Find on the map</CustomButton>
+
+                    <View style={{ marginTop: 10 }}>
+                        <CustomButton onPress={shareStoreDetails}>Share hotspot</CustomButton>
+                    </View>
+
                 </View>
             </View>
         </View>
