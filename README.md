@@ -12,6 +12,7 @@ Een React Native / Expo-applicatie waarmee gebruikers platenzaken in Rotterdam k
 - JSON
 - Maps & Location
 - Stylesheets
+- Git en Github
 
 # Functies
 - Platenzaken ontdekken: Bekijk een overzicht van platenzaken in Rotterdam.
