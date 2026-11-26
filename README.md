@@ -30,7 +30,7 @@ Een React Native / Expo-applicatie waarmee gebruikers platenzaken in Rotterdam k
 1. Clone de repository:
 
 ```sh
-git clone [https://github.com/eline-vanstraten/history-ai-agent.git](https://github.com/eline-vanstraten/record-stores.git)
+git clone https://github.com/eline-vanstraten/record-stores.git
 ```
 
 2. Ga naar de map:
