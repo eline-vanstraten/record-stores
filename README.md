@@ -1,4 +1,4 @@
-#📍 Record Radar
+# 📍 Record Radar
 
 Een React Native / Expo-applicatie waarmee gebruikers platenzaken in Rotterdam kunnen ontdekken, bekijken en opslaan. De app helpt muziekliefhebbers om vinylwinkels in de buurt te vinden en eenvoudig meer informatie over deze winkels te bekijken.
 
